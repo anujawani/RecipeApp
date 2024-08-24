@@ -7,7 +7,8 @@ class Recipe(models.Model):
     author = models.TextField(max_length=100)
     category = models.CharField(max_length=100)
     ratings = models.IntegerField()
-    description = models.CharField(max_length=500)
+    ingredients = models.CharField(max_length=500)
+    instructions = models.CharField(max_length=500)
     #created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

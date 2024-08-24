@@ -23,7 +23,8 @@ class RecipeListView(View):
                 author=data['author'],
                 category=data['category'],
                 ratings=data['ratings'],
-                description=data['description']
+                ingredients=data['ingredients'],
+                instructions=data['instructions']
             )
             recipe.save()
             return JsonResponse({'inserted': True, 'id': recipe.id}, status=201)
@@ -42,7 +43,8 @@ class RecipeDetailView(View):
                 'author': recipe.author,
                 'ratings': recipe.ratings,
                 'category': recipe.category,
-                'description': recipe.description,
+                'ingredients': recipe.ingredients,
+                'instructions':recipe.instructions
             })
         except Recipe.DoesNotExist:
             return JsonResponse({'error': 'Recipe not found'}, status=404)

@@ -6,7 +6,8 @@ const RecipeForm = () => {
     const [author, setAuthor] = useState('');
     const [category, setCategory] = useState('');
     const [ratings, setRating] = useState('');
-    const [description, setDescription] = useState('');
+    const [ingredients, setIngredients] = useState('');
+    const [instructions, setInstructions] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = (event) => {
@@ -17,7 +18,8 @@ const RecipeForm = () => {
             author,
             category,
             ratings,
-            description,
+            ingredients,
+            instructions
         };
 
         fetch('http://localhost:8000/api/recipes/', {
@@ -53,8 +55,12 @@ const RecipeForm = () => {
                 <input type="number" value={ratings} onChange={(e) => setRating(e.target.value)} min="1" max="5" required />
             </div>
             <div>
-                <label>Description:</label>
-                <textarea value={description} onChange={(e) => setDescription(e.target.value)} required></textarea>
+                <label>Ingredients:</label>
+                <textarea value={ingredients} onChange={(e) => setIngredients(e.target.value)} required></textarea>
+            </div>
+            <div>
+                <label>Instructions:</label>
+                <textarea value={instructions} onChange={(e) => setInstructions(e.target.value)} required></textarea>
             </div>
             <button type="submit">Add Recipe</button>
         </form>
